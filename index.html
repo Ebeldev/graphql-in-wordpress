@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>GraphQL-in-WordPress</h1>
+					<p>By Étienne Bélanger</p>
+					<p>WordCamp Boston 2019</p>
+				</section>
+				<section>
+					Let's go for a journey
+					How do you like to travel ?
+				</section>
+				<section>
+					Overload truck vs small luggage
+				</section>
+				<section>
+					Who am I
+				</section>
+				<section>
+					Goals for today
+					<ul>
+						<li>Basic of GraphQL</li>
+						<li>How to use today in your developement</li>
+					</ul>
+				</section>
+				<section>
+
+					<section>
+						What is a API ? REST API ?
+					</section>
+					<section>
+						Advantages and disavantages of REST API
+					</section>
+				</section>
+				<section>
+					<section>
+						What is GraphQL?
+					</section>
+					<section>
+						Advantages and disavantages of GraphQL
+					</section>
+					<section>
+						Basic terms: Schema, Query, Mutation, Server, Client
+						How it works
+					</section>
+					<section>
+						Basic of GraphQL Query
+					</section>
+					<section>
+						Basic of GraphQL Mutation
+					</section>
+					<section>
+						<h1>How to implement this in WordPress</h1>
+					</section>
+					<section>
+						<h1>GraphiQL and Postman</h1>
+					</section>
+					<section>
+							<h1>GraphQL self documenting</h1>
+							<p>docs and query autocompletion</p>
+					</section>
+					<section>
+						<h1>How to extends wpgraphql custom field</h1>
+					</section>
+				</section>
+				<section>
+					<h1>Plugins</h1>
+					<ul>
+						<li>acf</li>
+						<li>woocommerce</li>
+					</ul>
+				</section>
+				
+				<section>
+					So how are you gonna travel now ?
+				</section>
+				<section>
+					<h1>Links:</h1>
+					<ul>
+						<li><a href="http:graphql.com">GraphQL Documentation</a></li>
+						<li><a href="http:graphql.com">wpgraphql</a></li>
+						<li><a href="http:graphql.com">wpgraphql with acf</a></li>
+						<li><a href="http:graphql.com">woocommerce and graphql</a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
