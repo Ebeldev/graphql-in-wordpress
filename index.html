@@ -8,10 +8,15 @@
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css">
+		<link rel="stylesheet" href="css/theme/solarized.css">
+
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+			integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/customCss.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -27,84 +32,449 @@
 			<div class="slides">
 				<section>
 					<h1>GraphQL-in-WordPress</h1>
-					<p>By Étienne Bélanger</p>
-					<p>WordCamp Boston 2019</p>
 				</section>
 				<section>
-					Let's go for a journey
-					How do you like to travel ?
+					<h3>To follow along</h3>
+					<p>https://ebeldev.github.io/graphql-in-wordpress/</p>
 				</section>
 				<section>
-					Overload truck vs small luggage
+					<section>
+						<h2>Let's go for a journey</h2>
+						<p>How do you like to travel ?</p>
+					</section>
+					<section>
+						<p><em>Heavy</em> or <em>lightweight</em>?</p>
+					</section>
+					<section>
+						<div class="fbx fbx50">
+							<div class="fragment fade-in">
+								<p>Heavy style</p>
+								<img src="./assets/images/heavyweight-luggage.jpg#h60" alt="">
+							</div>
+							<div class="fragment fade-in">
+								<p>Lightweight style</p>
+								<img src="./assets/images/lightweight-luggage.jpg#h60" alt="">
+							</div>
+						</div>
+					</section>
 				</section>
 				<section>
-					Who am I
-				</section>
-				<section>
-					Goals for today
+					<h3>Goals for today</h3>
 					<ul>
-						<li>Basic of GraphQL</li>
-						<li>How to use today in your developement</li>
+						<li class="fragment fade-in-then-semi-out">Concepts around Api's</li>
+						<li class="fragment fade-in-then-semi-out">Basic knowledge of GraphQL</li>
+						<li class="fragment fade-in-then-semi-out">How to use it today in your developement</li>
 					</ul>
+				</section>
+				<section>
+					<h2>Étienne Bélanger</h2>
+					<div class="fbx fbx30 bio pfz08">
+						<div>
+							<img src="../assets/images/portrait2018.jpg" />
+						</div>
+						<div class="list-wrapper">
+							<ul>
+								<li>Self-taugh web developper</li>
+								<li>WordPress lover for more then 10 years</li>
+								<li>Work @ DistrictWeb as full-stack developer</li>
+								<li>Contact
+									<ul>
+										<li><i class="fas fa-envelope-square"></i>etienne@etiennebelanger.com</li>
+										<li><i class="fab fa-linkedin"></i>belangeretienne</li>
+										<li><i class="fab fa-twitter"></i>@ebeldev</li>
+										<li><i class="fab fa-github"></i>@ebeldev</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</section>
 				<section>
 
 					<section>
-						What is a API ? REST API ?
+						<h3>What is a API ? REST API ?</h3>
+						<p class="fragment fade-in">A api = a way for applications to talk to each other</p>
+						<p class="fragment fade-in">A REST api = a api based on representational state transfer (REST) technology</p>
+						<p class="fragment fade-in">REST API use HTTP Protocol to do GET, PUT, POST, DELETE operations</p>
+					</section>
+					
+					<section>
+						<div class="fbx fbx50">
+							<div>
+								<h3>WordPress Rest Api</h3>
+								<p>/wp-json/wp/v2</p>
+							</div>
+							<div>
+								<img src="../assets/images/rest-api.png#h80" />
+							</div>
+						</div>
 					</section>
 					<section>
-						Advantages and disavantages of REST API
+						<div class="fbx fbx50">
+							<div>
+								<img src="../assets/images/card-ui.png" />
+							</div>
+							<div>
+								<h3>Rest Api</h3>
+								<span>/wp-json/wp/v2</span>
+								<p class="fragment fade-in">/posts</p>
+								<p class="fragment fade-in">/media/"id"</p>
+								<p class="fragment fade-in">/users/"id"</p>
+								<p class="fragment fade-in">/categories/"id"</p>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Rest Api</h2>
+						<p>desavantages</p>
+						<p class="fragment fade-in-then-semi-out">Over-fetching = <em>a client downloads more information than is actually
+								needed</em></p>
+						<p class="fragment fade-in-then-semi-out">Under-fetching = <em>a specific endpoint doesn’t provide enough of the
+								required information</em></p>
+						<p class="fragment fade-in-then-semi-out">Maintainability and Scalability <em>having too many endpoints</em></p>
 					</section>
 				</section>
 				<section>
 					<section>
-						What is GraphQL?
+						<div class="fbx fbx50">
+							<div>
+								<img src="../assets/images/graphql-logo.png" />
+							</div>
+							<div>
+								<p class="fragment fade-in">Open-sourced by Facebook in 2015</p>
+								<p class="fragment fade-in">A query language for your API</p>
+							</div>
+						</div>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							![Rest vs GraphQL](../assets/images/rest-vs-graphql.png#h0)
+						</textarea>
 					</section>
 					<section>
-						Advantages and disavantages of GraphQL
+						<h3>Advantages of GraphQL</h3>
+						<p class="fragment fade-in-then-semi-out">One endpoint = <em>/graphql</em></p>
+						<p class="fragment fade-in-then-semi-out">Get only the data you ask for <em>nothing more, nothing less</em></p>
+						<p class="fragment fade-in-then-semi-out">It's a type language</p>
+						<p class="fragment fade-in-then-semi-out">it's self documenting <em>docs and query autocompletion</em></p>
 					</section>
 					<section>
-						Basic terms: Schema, Query, Mutation, Server, Client
-						How it works
+						<h3>GraphQL <em>Basic terms</em></h3>
+						<p>Type of operations you can do on your api</p>
+						<p class="fragment fade-in-then-semi-out">Query <em>get your data</em></p>
+						<p class="fragment fade-in-then-semi-out">Mutation <em>modify your data</em></p>
+						<p class="fragment fade-in-then-semi-out">Subscription <em>subscribe to action</em></p>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							![GraphQL Nodes](../assets/images/graphqlnode.png#h80)
+						</textarea>
 					</section>
 					<section>
-						Basic of GraphQL Query
+						<h3>GraphQL <em>has two parts</em></h3>
+						<div class="fbx fbx50 fbxstart">
+							<div>
+								<h5>Server</h5>
+								<p class="fragment fade-in fz1">Responsible for the SCHEMA of your API and resolvers of the data</p>
+								<pre class="fragment fade-in sW"><code data-trim>
+					type Query {
+					 posts: [Post]
+					}
+					
+					type Post {
+					 title: String
+					 content: String
+					 author: Author
+					}
+					
+					type Author {
+					 name: String
+					 avatar: String 
+					 posts: [Post]
+					}
+					</code></pre>
+					
+							</div>
+							<div>
+								<h5>Client</h5>
+								<p class="fragment fade-in fz1">Responsible for making the query to the server</p>
+								<p class="fragment fade-in">
+									<pre class="fragment fade-in sW"><code data-trim>
+													query {
+													 posts {
+													  title
+													  author {
+													   name
+													   avatar
+													  }
+													 }
+													}
+													</code></pre>
+								</p>
+								<p class="fragment fade-in">
+									<pre class="fragment fade-in sW"><code data-trim>
+					{"data": {
+					  "posts": {
+					   "edges": [{
+					     "node": {
+					      "title": "Hello World",
+					      "author": {
+						   name: "My super name",
+					       avatar: "http://www.imagesource.com/authoravatar.jpg"
+						  }
+					     }
+					   }]
+					  }
+					}}
+													</code></pre>
+								</p>
+							</div>
+						</div>
+					</section>
+					
+					<section>
+						<h3>GraphQL <em>Basic of GraphQL Query</em></h3>
+						<div class="fbx fbx30">
+							<div class="fragment fade-in">
+								<p>The Query</p>
+<pre class="sW"><code class="hljs json" data-trim>
+query {
+ posts {
+  title
+  author {
+   name
+   avatar
+  }
+ }
+}
+</code></pre>
+						</div>
+							<div class="fragment fade-in">
+								<p>The response</p>
+								<pre class=""><code data-trim class="hljs json">
+								{"data": {
+								  "posts": {
+								   "edges": [{
+								     "node": {
+								      "title": "Hello World",
+								      "author": {
+									    name: "My super name",
+								        avatar: "http://www.imagesource.com/authoravatar.jpg"
+									  }
+								     }
+								   }]  }	}}
+								</code></pre>
+							</div>
+						</div>
+					</section>
+				
+					<section>
+						<h3>GraphQL <em>Basic of GraphQL Query</em></h3>
+						<div class="fbx fbx33 fbxstart">
+							<div class="fragment fade-in">
+								<p>The Query with a name</p>
+								<pre class="sW"><code class="hljs json" data-trim data-line-numbers="1">
+query GET_POSTS {
+ posts {
+  title
+  author {
+   name
+   avatar
+  }
+ }
+}
+								</code></pre>
+							</div>
+							<div class="fragment fade-in">
+								<p>The Query with arguments</p>
+<pre class="sW"><code class="hljs json" data-trim data-line-numbers="2">
+query GET_POSTS {
+ posts (first: 5) {
+  title
+  author {
+   name
+   avatar
+  }
+ }
+}
+</code></pre>
+							</div>
+							<div class="fragment fade-in">
+								<p>The Query with variables</p>
+<pre class="sW"><code class="hljs json" data-trim data-line-numbers="2,11-13">
+query GET_POSTS($first: Int){
+ posts (first: $first) {
+  title
+  author {
+   name
+   avatar
+  }
+ }
+}
+
+// Query variables
+{
+"first": 5
+}
+</code></pre>
+							</div>
+						</div>
+					</section>
+					
+					<section>
+						<h3>GraphQL <em>Basic of GraphQL Query</em></h3>
+						<div class="fbx fbx30 fbxstart">
+							<div class="fragment fade-in">
+								<p>The Query with a alias</p>
+								<pre class="sW"><code class="hljs json" data-trim data-line-numbers="2">
+					query GET_POSTS {
+					 aliasname : posts {
+					  title
+					  author {
+					   name
+					   avatar
+					  }
+					 }
+					}
+								</code></pre>
+							</div>
+							<div class="fragment fade-in">
+								<p>The Query with arguments</p>
+								<pre class="sW"><code class="hljs json" data-trim data-line-numbers="3">
+					{
+					 "data": {
+					  "aliasname": {
+					   "edges": [{
+					    "node": {
+					     "title": "Hello World",
+					     "author": {
+					      name: "My super name",
+					      avatar: "http://www.imagesource.com/authoravatar.jpg"
+					     }
+					    }
+					   }]
+					  }
+					 }
+					}													
+					</code></pre>
+							</div>
+					
+						</div>
+					</section>
+
+					<section>
+						<h3>GraphQL <em>Basic of GraphQL Mutation</em></h3>
+					<div class="fbx fbx30 fbxstart fbxC">
+						<div class="fragment fade-in">
+<pre class=""><code class="hljs json" data-trim data-line-numbers="2">
+mutation {
+ createPost( input:{clientMutationId: "CreatePost", title: "My new post"} ) {
+  post { 
+   id 
+   title
+   date
+  }
+ }
+}
+</code></pre>
+						</div>
+						<div class="fragment fade-in">
+<pre class=""><code class="hljs json">
+{ "errors": [{
+ "message": "Sorry, you are not allowed to create posts",
+ "category": "user",
+ "locations": [	{"line": 2, "column": 3 } ],
+ "path": [ "createPost" ]
+}],
+"data": { "createPost": null } }
+</code></pre>
+						</div>
+					
+					</div>
+					</section>
+
+					<section>
+						<h2>GraphQL <em>options</em></h2>
+						<div class="fbx fbx50 fbxstart">
+							<div>
+								<h3>Server</h3>
+								<p class="fragment fade-in fx08">Custom</p>
+								<p class="fragment fade-in fx08">Prisma<span>Framework for self-hosted GraphQL server</span></p>
+								<p class="fragment fade-in fx08">WordExpress<span>Framework to help develop Wordpress applications (server +
+										client)</span></p>
+								<p class="fragment fade-in fx08">wp-graphql<span>WordPress
+										plugin</span><span>https://github.com/wp-graphql/wp-graphql</span></p>
+							</div>
+							<div>
+								<h3>Client</h3>
+								<p class="fragment fade-in fx08">Relay<span>From Facebook, for more advance developpers</span></p>
+								<p class="fragment fade-in fx08">Apollo-client<span>Apollo-boost = no setup, cache, manage local and server
+										data</span></p>
+							</div>
+						</div>
 					</section>
 					<section>
-						Basic of GraphQL Mutation
+						<h3>Tools to help develop</h3>
+						<p>GraphiQL and Postman</p>
 					</section>
-					<section>
-						<h1>How to implement this in WordPress</h1>
-					</section>
-					<section>
-						<h1>GraphiQL and Postman</h1>
-					</section>
-					<section>
-							<h1>GraphQL self documenting</h1>
-							<p>docs and query autocompletion</p>
-					</section>
-					<section>
-						<h1>How to extends wpgraphql custom field</h1>
+			
+					<section class="fbxl">
+						<h3 class="noM">Extending Wp-Graphql plugin <em>in your theme functions.php</em></h3>
+						<pre><code class="php" data-trim>
+					use WPGraphQL\Types;
+					
+					function wcgql_add_custom_fields_to_graphql ($fields) {
+					  $fields['custom'] = [
+					    'type' 			=> Types::String(),
+						'description'	=> __( 'The date the film was released', 'wcmtl-graphql' ),
+						'resolve'		=> function ( \WP_Post $post ) {
+						  // Get your data
+						  $customField = get_post_meta( $post->ID, 'custom_field_name', true );
+						  // make any modification on your data
+						
+						  // Return your data
+						  return $customField;
+						},
+					  ];
+					
+					  return $fields;
+					}
+					
+					add_filter( 'graphql_post_fields', 'wcgql_add_custom_fields_to_graphql', 10, 1 );
+					</code></pre>
+					
 					</section>
 				</section>
 				<section>
 					<h1>Plugins</h1>
 					<ul>
-						<li>acf</li>
-						<li>woocommerce</li>
+						<li><a href="https://www.wpgraphql.com/acf/">WPGraphQL with ACF</a></li>
+						<li><a href="https://github.com/wp-graphql/wp-graphql-woocommerce">WooCommerce and GraphQL github repo</a></li>
 					</ul>
 				</section>
 				
 				<section>
-					So how are you gonna travel now ?
+					<h4>So how are you gonna travel now ?</h4>
+					<div class="fbx fbx50 fbxstart">
+						<div class="fragment fade-in">
+							<p>REST API style</p>
+							<img src="./assets/images/restapi-style.jpg#h60" alt="">
+						</div>
+						<div class="fragment fade-in">
+							<p>GraphQL style</p>
+							<img src="./assets/images/lightweight-luggage.jpg#h60" alt="">
+						</div>
+					</div>
 				</section>
 				<section>
-					<h1>Links:</h1>
+					<h3>Links:</h3>
 					<ul>
 						<li><a href="http:graphql.com">GraphQL Documentation</a></li>
-						<li><a href="http:graphql.com">wpgraphql</a></li>
-						<li><a href="http:graphql.com">wpgraphql with acf</a></li>
-						<li><a href="http:graphql.com">woocommerce and graphql</a></li>
+						<li><a href="https://www.wpgraphql.com/">WPGraphQL plugin</a></li>
+						<li><a href="https://www.wpgraphql.com/acf/">WPGraphQL with ACF</a></li>
+						<li><a href="https://playground.wpgraphql.com">WPGraphQL Playground</a></li>
+						<li><a href="https://github.com/wp-graphql/wp-graphql-woocommerce">WooCommerce and GraphQL github repo</a></li>
+						<li><a href="https://fr.wordpress.org/plugins/woo-graphql-api/">WooCommerce and GraphQL plugin (doesn't seems to be maintained</a></li>
 					</ul>
 				</section>
 			</div>
@@ -117,6 +487,8 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				width: '80%',
+				height: '90%',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },

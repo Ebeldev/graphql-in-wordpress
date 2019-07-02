@@ -1,9 +1,12 @@
-# reveal.js [![Build Status](https://travis-ci.org/hakimel/reveal.js.svg?branch=master)](https://travis-ci.org/hakimel/reveal.js)
-
-This is the GraphQL-in-WordPress slides for the WordCamp Boston 2019. 
+# This is the GraphQL-in-WordPress slides 
 
 ## Git clone this repo
 cd into it
-npm start it
-or visit this page
+npm i
+npm start
+localhost:8000//
+
+or 
+visit this page
+https://ebeldev.github.io/graphql-in-wordpress/
 
