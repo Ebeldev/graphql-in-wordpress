@@ -126,7 +126,7 @@
 					</section>
 					<section>
 						<h2>Rest Api</h2>
-						<p>desavantages</p>
+						<p>disadvantages</p>
 						<p class="fragment fade-in-then-semi-out">Over-fetching = <em>a client downloads more information than is actually
 								needed</em></p>
 						<p class="fragment fade-in-then-semi-out">Under-fetching = <em>a specific endpoint doesn’t provide enough of the
@@ -148,7 +148,7 @@
 					</section>
 					<section data-markdown>
 						<textarea data-template>
-							![Rest vs GraphQL](../assets/images/rest-vs-graphql.png#h0)
+							![Rest vs GraphQL](../assets/images/rest-vs-graphql.png#h80)
 						</textarea>
 					</section>
 					<section>
@@ -220,7 +220,7 @@
 					      "title": "Hello World",
 					      "author": {
 						   name: "My super name",
-					       avatar: "http://www.imagesource.com/authoravatar.jpg"
+					       avatar: "imgsrc.com/author.jpg"
 						  }
 					     }
 					   }]
@@ -259,7 +259,7 @@ query {
 								      "title": "Hello World",
 								      "author": {
 									    name: "My super name",
-								        avatar: "http://www.imagesource.com/authoravatar.jpg"
+								        avatar: "http://www.imgsrc.com/avatar.jpg"
 									  }
 								     }
 								   }]  }	}}
@@ -320,6 +320,37 @@ query GET_POSTS($first: Int){
 							</div>
 						</div>
 					</section>
+					<section>
+						<h3>GraphQL <em>Basic of GraphQL Query</em></h3>
+						<div class="fbx fbx30 fbxstart">
+							<div class="fragment fade-in">
+								<p>The Fragment</p>
+							<pre class="sW"><code class="hljs json" data-trim data-line-numbers="2">
+							fragment userFields on User {
+							id
+							firstName
+							lastName
+							phone
+							username
+							}
+							</code></pre>
+							</div>
+							<div class="fragment fade-in">
+								<p>The Query with a fragment</p>
+								<pre class="sW"><code class="hljs json" data-trim data-line-numbers="1">
+query getUsers {
+ admins: users(role: admin) {
+  ...userFields
+ }
+
+ accountants: users(role: accountant) {
+  ...userFields
+ }
+}
+								</code></pre>
+							</div>
+							
+					</section>
 					
 					<section>
 						<h3>GraphQL <em>Basic of GraphQL Query</em></h3>
@@ -349,7 +380,7 @@ query GET_POSTS($first: Int){
 					     "title": "Hello World",
 					     "author": {
 					      name: "My super name",
-					      avatar: "http://www.imagesource.com/authoravatar.jpg"
+					      avatar: "http://www.imgsrc.com/avatar.jpg"
 					     }
 					    }
 					   }]
@@ -413,11 +444,44 @@ mutation {
 							</div>
 						</div>
 					</section>
+					
 					<section>
 						<h3>Tools to help develop</h3>
 						<p>GraphiQL and Postman</p>
 					</section>
 			
+					<section>
+						<h3>WPGRAPHQL</h3>
+						<p>Add custom post type to GraphQL schema</p>
+						<pre><code class="php" data-trim>
+							add_action( 'init', function() {
+							register_post_type( 'docs', [
+							'show_in_graphql' => true,
+							'hierarchical' => true,
+							'graphql_single_name' => 'Document',
+							'graphql_plural_name' => 'Documents',
+							] );
+							} );
+						</code></pre>
+					</section>
+					<section>
+						<h3>WPGRAPHQL</h3>
+						<p>Add custom post type you don't control to GraphQL schema</p>
+						<pre><code class="php" data-trim>
+							add_filter( 'register_post_type_args', function( $args, $post_type ) {
+							
+							if ( 'docs' === $post_type ) {
+							$args['show_in_graphql'] = true;
+							$args['graphql_single_name'] = 'Document';
+							$args['graphql_plural_name'] = 'Documents';
+							}
+							
+							return $args;
+							
+							}, 10, 2 );
+						</code></pre>
+					</section>
+
 					<section class="fbxl">
 						<h3 class="noM">Extending Wp-Graphql plugin <em>in your theme functions.php</em></h3>
 						<pre><code class="php" data-trim>
